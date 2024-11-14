@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Management Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#events">Upcoming Events</a></li>
+      <li><a href="#performance">Performance</a></li>
+      <li><a href="#leaderboard">Leaderboard</a></li>
+      <li><a href="#reminders">Event Reminders</a></li>
+      <li><a href="#assistance">Request Assistance</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <!-- Dashboard Section -->
+    <section id="dashboard">
+      <h1>Dashboard</h1>
+      <div class="stats">
+        <div class="card">
+          <h3>Upcoming Events</h3>
+          <p id="event-count">0</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section id="events">
+        <h2>Upcoming Events</h2>
+        <div id="event-list">
+          <!-- Event list will be populated here -->
+        </div>
+      </section>
+
+    <!-- Athlete Performance Graph Section -->
+    <section id="performance">
+      <h2>Athlete Performance</h2>
+      <canvas id="performanceGraph"></canvas>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard">
+        <h2>Real-Time Leaderboard</h2>
+        <label for="filter-sport">Filter by Sport:</label>
+        <select id="filter-sport" onchange="filterLeaderboard()">
+          <option value="all">All Sports</option>
+          <option value="Soccer">Soccer</option>
+          <option value="Basketball">Basketball</option>
+          <option value="Tennis">Tennis</option>
+        </select>
+        <ul id="leaderboard-list">
+          <!-- Real-time leaderboard will be populated here -->
+        </ul>
+      </section>
+        <!-- Sample leaderboard values -->
+      </ul>
+    </section>
+
+    <!-- Event Reminder Section -->
+    <section id="reminders">
+        <h2>Event Reminders</h2>
+        <div id="reminder-list">
+          <!-- List of event reminders -->
+        </div>
+        <button onclick="openReminderModal()">Add Reminder</button>
+      </section>
+
+    <!-- Request Assistance Section -->
+    <section id="assistance">
+      <h2>Request Assistance</h2>
+      <div class="assistance-form">
+        <label for="athlete-name-assistance">Athlete Name:</label>
+        <input type="text" id="athlete-name-assistance" required>
+        <label for="coach-select">Select Coach:</label>
+        <select id="coach-select"></select>
+        <label for="assistance-details">Details:</label>
+        <textarea id="assistance-details" rows="4"></textarea>
+        <button onclick="requestAssistance()">Submit Request</button>
+      </div>
+    </section>
+
+    <!-- Modal for Adding Reminders -->
+    <div id="reminder-modal" class="modal">
+        <div class="modal-content">
+          <h2>Add Event Reminder</h2>
+          <label for="reminder-event">Event Name:</label>
+          <input type="text" id="reminder-event" required>
+          <label for="reminder-time">Reminder Time:</label>
+          <input type="datetime-local" id="reminder-time" required>
+          <button onclick="saveReminder()">Save Reminder</button>
+          <button onclick="closeModal()">Cancel</button>
+        </div>
+      </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
